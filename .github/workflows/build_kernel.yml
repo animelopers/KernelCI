@@ -51,5 +51,9 @@ jobs:
           if [ "${DEVICE}" = "ysl" ]; then
             wget https://raw.githubusercontent.com/ALprjkt/KernelCI/main/scripts/ysl_build_script.sh
             bash ysl_build_script.sh
+          elif [ "${DEVICE}" = "vince" ]; then
+            wget https://raw.githubusercontent.com/animelopers/KernelCI/main/scripts/vince_build_script.sh
+            bash vince_build_script.sh
+          else
             echo "Device not supported yet"
           fi
