@@ -24,7 +24,7 @@ KERNEL_DIR=$(pwd)
 CACHE=1
 export CACHE
 export KBUILD_COMPILER_STRING
-ARCH=arm647
+ARCH=arm64
 export ARCH
 DEVICE="Redmi 5 Plus"
 export DEVICE
