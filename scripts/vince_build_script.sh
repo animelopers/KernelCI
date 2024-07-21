@@ -32,15 +32,15 @@ CODENAME="vince"
 export CODENAME
 DEFCONFIG="vince_defconfig"
 export DEFCONFIG
-COMMIT_HASH=$(git rev-parse --short HEAD)
-export COMMIT_HASH
+KERNELNAME=Nekolite-CAF
+export KERNELNAME
 PROCS=$(nproc --all)
 export PROCS
-STATUS=STABLE
-export STATUS
+VERSION=X5
+export VERSION
 source "${HOME}"/.bashrc && source "${HOME}"/.profile
 if [ $CACHE = 1 ]; then
-    ccache -M 100G
+    ccache -M 50G
     export USE_CCACHE=1
 fi
 LC_ALL=C
@@ -65,10 +65,9 @@ sendinfo() {
 *Building on*: \`Github actions\`
 *Date*: \`${DATE}\`
 *Device*: \`${DEVICE} (${CODENAME})\`
-*Branch*: \`$(git rev-parse --abbrev-ref HEAD)\`
-*Last Commit*: [${COMMIT_HASH}](${REPO}/commit/${COMMIT_HASH})
 *Compiler*: \`${KBUILD_COMPILER_STRING}\`
-*Build Status*: \`${STATUS}\`"
+*Kernel Name*: \`${KERNELNAME}\`
+*Version*: \`${VERSION}\` "
 }
 
 # Push kernel to channel
@@ -116,7 +115,7 @@ compile() {
 # Zipping
 zipping() {
     cd AnyKernel || exit 1
-    zip -r9 Nekolite-CAF-Kernel-"${CODENAME}"-"${DATE}".zip ./*
+    zip -r9 "${KERNELNAME}"-Kernel-"${CODENAME}"-"${VERSION}"-"${DATE}".zip ./*
     cd ..
 }
 
