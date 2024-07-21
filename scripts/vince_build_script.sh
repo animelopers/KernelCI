@@ -10,7 +10,6 @@ clang() {
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
         git clone https://gitlab.com/LeCmnGend/clang -b clang-r510928 --depth=1 clang
-        KBUILD_COMPILER_STRING="Aosp clang 18.0"
         PATH="${PWD}/clang/bin:${PATH}"
     fi
     sudo apt install -y ccache
@@ -23,7 +22,6 @@ START=$(date +"%s")
 KERNEL_DIR=$(pwd)
 CACHE=1
 export CACHE
-export KBUILD_COMPILER_STRING
 ARCH=arm64
 export ARCH
 DEVICE="Redmi 5 Plus"
@@ -65,7 +63,6 @@ sendinfo() {
 *Building on*: \`Github actions\`
 *Date*: \`${DATE}\`
 *Device*: \`${DEVICE} (${CODENAME})\`
-*Compiler*: \`${KBUILD_COMPILER_STRING}\`
 *Kernel Name*: \`${KERNELNAME}\`
 *Version*: \`${VERSION}\` "
 }
